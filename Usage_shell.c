@@ -4,17 +4,15 @@
 #include <string.h>
 #include <unistd.h>
 
-extern char **environ;
-
 #define MAX_INPUT_LENGTH 1024
 
 void display_prompt(void);
 void execute_command(char *command);
 
 /**
- * main - programs entry point.
- * Return: 0.
- */
+ * main - start of the program.
+ * Return: 0 on success.
+ **/
 
 int main(void)
 {
@@ -37,14 +35,13 @@ int main(void)
 
 	execute_command(input);
 	}
-
-	return 0;
+	return (0);
 }
 
 /**
- * display_prompt - Shows the output of the shell
- * Return: 0;
- */
+ * display_prompt - shows the shell prompt.
+ * Return: nothing.
+ **/
 
 void display_prompt(void)
 {
@@ -53,27 +50,32 @@ void display_prompt(void)
 }
 
 /**
- * execute_command - Child process command executer
- * @command: Executed command
- * Return: 0;
- */
+ * execute_command - Command executer in the shell.
+ * @command: The executed command.
+ * Return: Nothing.
+ **/
 
 void execute_command(char *command)
 {
 	pid_t pid = fork();
+
 	if (pid == -1)
-{
+	{
 	perror("fork");
-	exit(EXIT_FAILURE)
-}
-	else if (pid == 0)
-{
-	execlp(command, command, NULL);
-	perror("execlp");
 	exit(EXIT_FAILURE);
-}
+	}
+	else if (pid == 0)
+	{
+	char *args[] = {command, NULL};
+
+	if (execve(command, args, environ) == -1)
+	{
+	perror("execve");
+	exit(EXIT_FAILURE);
+	}
+	}
 	else
-{
+	{
 	wait(NULL);
-}
+	}
 }
