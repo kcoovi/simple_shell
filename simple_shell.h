@@ -6,5 +6,8 @@
 void execute_command(char *command);
 void handle_input(char *input);
 
+void display_prompt(void);
+void execute_command(char *command);
+
 #endif /* SIMPLE_SHELL_H */
 
