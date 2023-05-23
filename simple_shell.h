@@ -9,5 +9,10 @@ void handle_input(char *input);
 void display_prompt(void);
 void execute_command(char *command);
 
+extern char **environ;
+
+void display_prompt(void);
+void execute_command(char *arguments[]);
+
 #endif /* SIMPLE_SHELL_H */
 
