@@ -10,8 +10,8 @@ void display_prompt(void);
 void execute_command(char *command);
 
 /**
- * main - start of the program.
- * Return: 0 on success.
+ * main - The entry of the shell.
+ * Return: 0
  **/
 
 int main(void)
@@ -23,36 +23,32 @@ int main(void)
 	display_prompt();
 
 	if (fgets(input, sizeof(input), stdin) == NULL)
-	{
 	printf("\n");
 	break;
 	}
-
 	input[strcspn(input, "\n")] = '\0';
-
-	if (strlen(input) == 0)
-	continue;
-
+	if (strlen(input) > 0)
+	{
 	execute_command(input);
 	}
+	}
+
 	return (0);
 }
 
 /**
- * display_prompt - shows the shell prompt.
- * Return: nothing.
+ * display_prompt - displays on the shell
  **/
 
 void display_prompt(void)
 {
-	printf("shell> ");
+	printf("$ ");
 	fflush(stdout);
 }
 
 /**
- * execute_command - Command executer in the shell.
- * @command: The executed command.
- * Return: Nothing.
+ * execute_command - Executes shell commands.
+ * @command: The command to be executed in the shell.
  **/
 
 void execute_command(char *command)
@@ -66,11 +62,19 @@ void execute_command(char *command)
 	}
 	else if (pid == 0)
 	{
-	char *args[] = {command, NULL};
+	char executable[PATH_MAX];
 
-	if (execve(command, args, environ) == -1)
+	snprintf(executable, sizeof(executable), "/bin/%s", command);
+	if (access(executable, X_OK) != -1)
 	{
+	char *args[] = {executable, NULL};
+
+	execve(executable, args, NULL);
 	perror("execve");
+	}
+	else
+	{
+	printf("Command not found: %s\n", command);
 	exit(EXIT_FAILURE);
 	}
 	}
@@ -79,3 +83,4 @@ void execute_command(char *command)
 	wait(NULL);
 	}
 }
+
