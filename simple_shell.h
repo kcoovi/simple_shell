@@ -1,6 +1,7 @@
 #ifndef SIMPLE_SHELL_H
 #define SIMPLE_SHELL_H
 
+/* include required libraries */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,8 +22,17 @@
 void execute_command(char *command);
 void handle_input(char *input);
 
-void display_prompt(void);
-void execute_command(char *command);
+/* define constant variable */
+
+typedef struct Command{
+	    char** args;
+	    size_t numArgs;
+	 }Command;
+void initCmdStruct(Command*); 
+void destroyCmdStruct(Command*);
+void parseInputLine(const char*, Command*); 
+	 
+extern const char* PROMPT;
 
 extern char **environ;
 
