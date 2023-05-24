@@ -1,13 +1,4 @@
 #include "simple_shell.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-#define MAX_INPUT_LENGTH 1024
-
-void display_prompt(void);
-void execute_command(char *command);
 
 /**
  * main - The entry of the shell.
@@ -21,8 +12,8 @@ int main(void)
 	while (1)
 	{
 	display_prompt();
-
 	if (fgets(input, sizeof(input), stdin) == NULL)
+	{
 	printf("\n");
 	break;
 	}
@@ -32,12 +23,11 @@ int main(void)
 	execute_command(input);
 	}
 	}
-
 	return (0);
 }
 
 /**
- * display_prompt - displays on the shell
+ * display_prompt - displays the shell prompt.
  **/
 
 void display_prompt(void)
@@ -65,6 +55,7 @@ void execute_command(char *command)
 	char executable[PATH_MAX];
 
 	snprintf(executable, sizeof(executable), "/bin/%s", command);
+
 	if (access(executable, X_OK) != -1)
 	{
 	char *args[] = {executable, NULL};
@@ -83,4 +74,3 @@ void execute_command(char *command)
 	wait(NULL);
 	}
 }
-
