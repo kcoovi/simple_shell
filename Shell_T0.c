@@ -3,9 +3,8 @@
  * main - function
  * Return: 0
  */
-
 int main(void)
 {
-printf("Hello world!\n");
+printf("Simple Shell Task");
 return (0);
 }
