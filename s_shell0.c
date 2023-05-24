@@ -7,6 +7,9 @@
 int main(void)
 {
 int i = 1;
-i++;
+if (i < 0)
+{
+	i++;
+}
 }
 return (0);
