@@ -10,7 +10,7 @@ int i = -1;
 
 while (1)
 {
-n = rd();
+n = rds();
 a = sp(n);
 i = exe(a);
 free(n);

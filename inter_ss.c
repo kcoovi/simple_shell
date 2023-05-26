@@ -10,8 +10,8 @@ int i = -1;
 
 while (1)
 {
-printf(">>");
-n = rd();
+printf(">> ");
+n = rdl();
 a = sp(n);
 i = exe(a);
 free(n);
