@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * myenv - env
+ * kenv - env
  * @args: cmd
  * Return: 0
  */
-int myenv(char **args)
+int kenv(char **args)
 {
 int i = 0;
 (void)(**args);

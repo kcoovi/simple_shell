@@ -29,7 +29,7 @@ n[i] = '\0';
 return (n);
 }
 else
-{			
+{
 n[i] = mychar;
 }
 i++;

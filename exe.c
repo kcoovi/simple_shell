@@ -7,14 +7,14 @@
 int exe(char **args)
 {
 char *cmd1[] = {
-"myenv",
-"myexit"
+"kenv",
+"kenx"
 };
 int (*cmd2[])(char **) = {
-&myenv,
-&myexit
+&kenv,
+&kenx
 };
-long unsigned int i = 0;
+unsigned long int i = 0;
 
 if (args[0] == NULL)
 {

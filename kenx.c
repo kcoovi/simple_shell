@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * myexit - function
+ * kenx - function
  * @args: cmd
  * Return: 0
  */
-int myexit(char **args)
+int kenx(char **args)
 {
 
 if (args[1])
