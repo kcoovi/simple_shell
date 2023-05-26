@@ -1,33 +1,34 @@
 #include "main.h"
 /**
  * exe - function
- * @a: cmd
+ * @args: cmd
  * Return: 0
  */
-int exe(char **a)
+int exe(char **args)
 {
-char *cmd[] = {
-"kev",
-"kenv",
-"x"
+char *cmd1[] = {
+"myenv",
+"myexit"
 };
-int (*b[])(char **) = {
-&kev,
-&kenv,
-&x
+int (*cmd2[])(char **) = {
+&myenv,
+&myexit
 };
-unsigned long int i = 0;
+long unsigned int i = 0;
 
-if (a[0] == NULL)
+if (args[0] == NULL)
 {
+
 return (-1);
 }
-for (; i < sizeof(cmd) / sizeof(char *); i++)
+
+for (; i < sizeof(cmd1) / sizeof(char *); i++)
 {
-if (strcmp(a[0], cmd[i]) == 0)
+
+if (strcmp(args[0], cmd1[i]) == 0)
 {
-return ((*b[i])(a));
+return ((*cmd2[i])(args));
 }
 }
-return (np(a));
+return (np(args));
 }

@@ -5,16 +5,14 @@
  */
 int main(void)
 {
-int term;
-term = isatty(STDIN_FILENO);
-switch (term)
+
+if (isatty(STDIN_FILENO) == 1)
 {
-case 1:
 inter();
-break;
-default:
+}
+else
+{
 ninter();
-break;
 }
 return (0);
 }

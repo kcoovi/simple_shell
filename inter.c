@@ -5,24 +5,20 @@
  */
 void inter(void)
 {
-char *n, **a;
+char *n;
+char **args;
 int i = -1;
 
-while (1)
-{
+do {
 printf(">> ");
 n = rdl();
-a = sp(n);
-i = exe(a);
+args = spl(n);
+i = exe(args);
 free(n);
-free(a);
+free(args);
 if (i >= 0)
 {
 exit(i);
-}
-if (i != -1)
-{
-break;
-}
-}
+		}
+} while (i == -1);
 }

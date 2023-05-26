@@ -1,27 +1,23 @@
 #include "main.h"
 /**
- * ninter - function
+ * ninter - ninter
  * Return: 0
  */
 void ninter(void)
 {
-char *n, **a;
+char **args;
 int i = -1;
+char *n;
 
-while (1)
-{
+do {
 n = rds();
-a = sp(n);
-i = exe(a);
+args = spl(n);
+i = exe(args);
 free(n);
-free(a);
+free(args);
 if (i >= 0)
 {
 exit(i);
 }
-if (i != -1)
-{
-break;
-}
-}
+} while (i == -1);
 }

@@ -1,16 +1,15 @@
 #include "main.h"
+
 /**
  * rdl - rdl
  * Return: 0
  */
 char *rdl(void)
 {
-size_t a = 0;
 char *n = NULL;
-ssize_t i;
+size_t bu = 0;
 
-i = getline(&n, &a, stdin);
-if (i == -1)
+if (getline(&n, &bu, stdin) == -1)
 {
 if (feof(stdin))
 {
@@ -20,7 +19,7 @@ exit(EXIT_SUCCESS);
 else
 {
 free(n);
-perror("error");
+perror("error while reading the line from stdin");
 exit(EXIT_FAILURE);
 }
 }

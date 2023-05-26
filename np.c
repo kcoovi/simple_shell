@@ -1,35 +1,35 @@
 #include "main.h"
 /**
  * np - function
- * @a: a
+ * @args: cmd
  * Return: 0
  */
-int np(char **a)
+int np(char **args)
 {
 pid_t pid;
 int i;
 
 pid = fork();
-if (pid == 0)
+if (pid ==  0)
 {
-if (execvp(a[0], a) == -1)
+
+if (execvp(args[0], args) == -1)
 {
-perror("error in new_process: child process");
-exit(EXIT_FAILURE);
+perror("error");
 }
+exit(EXIT_FAILURE);
 }
 else if (pid < 0)
 {
+
 perror("error");
 }
 else
 {
+
 do {
-if (waitpid(pid, &i, WUNTRACED) == -1)
-{
-perror("error");
-}
+waitpid(pid, &i, WUNTRACED);
 } while (!WIFEXITED(i) && !WIFSIGNALED(i));
 }
-return (1);
+return (-1);
 }
