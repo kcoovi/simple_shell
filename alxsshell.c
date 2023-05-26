@@ -1,4 +1,4 @@
-#include "simple_shell.h"
+#include "main.h"
 /**
  * main - function
  * Return: 0
