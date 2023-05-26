@@ -1,9 +1,9 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-void display(void);
-void rd(char *cmd);
-void exe(const char *cmd);
-void int_cmd(char *args[]);
-void ext_cmd(char *args[]);
+void execute_command(const char *command, char *args[]);
+void execute_env(void);
+void execute_exit(void);
+char *get_full_path(const char *command);
+
 #endif
