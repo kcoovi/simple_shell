@@ -1,1 +1,1 @@
-simple_shell team project
+# A Simple Shell using C with custom commands
